@@ -1,0 +1,55 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway global filter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: aidt-vcloudapi
+          uri: lb://AIDT-VCLOUDAPI
+          predicates:
+            - Path=/vcloudapi/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+#            - RewritePath=/aidt-lmsapi/(?<segment>.*), /$\{segment}
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway logging filter
+                preLogger: true
+                postLogger: true
+        - id: aidt-lmsapi
+          uri: lb://AIDT-LMSAPI
+          predicates:
+            - Path=/lmsapi/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+#            - RewritePath=/aidt-lmsapi/(?<segment>.*), /$\{segment}
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway logging filter
+                preLogger: true
+                postLogger: true
+        - id: aidt-config
+          uri: lb://AIDT-CONFIG
+          predicates:
+            - Path=/config/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh, info

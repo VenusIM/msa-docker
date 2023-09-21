@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: aidt-vcloudapi
+  cloud:
+    config:
+      name: aidt-vcloudapi
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 5
+        multiplier: 1.1
+      request-connect-timeout: 2000
+      request-read-timeout: 10000
