@@ -1,11 +1,15 @@
+server:
+  port: 8888
 spring:
+  application:
+    name: aidt-config
   cloud:
     config:
-        server:
-          git:
-            default-label: main
+      server:
+        git:
+          default-label: main
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     username: guest
     password: guest
