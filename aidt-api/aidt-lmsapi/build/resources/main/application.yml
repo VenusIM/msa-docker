@@ -1,8 +1,0 @@
-spring:
-  profiles:
-    active: local
-  application:
-    name: aidt-lmsapi
-  cloud:
-    config:
-      name: aidt-lmsapi
