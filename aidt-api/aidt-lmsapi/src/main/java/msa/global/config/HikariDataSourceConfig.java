@@ -8,16 +8,16 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 public class HikariDataSourceConfig {
 
-	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource.hikari")
+	/*@Bean
+	@ConfigurationProperties(prefix = "spring.datasource.hikari")*/
 	public HikariConfig hikariConfig() {
 		return new HikariConfig();
 	}
 
-	@Bean
+//	@Bean
 	public DataSource dataSource() {
 		return new HikariDataSource(hikariConfig());
 	}

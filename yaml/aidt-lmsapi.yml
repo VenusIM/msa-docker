@@ -7,15 +7,15 @@ server:
       charset: UTF-8
   shutdown: graceful
 
-spring:
-  datasource:
-    hikari:
-      poolName: SpringBootJPAHikariCP
-      maximum-pool-size: 10
-      minimum-idle: 5
-      idleTimeout: 10000
-      maxLifetime: 2000000
-      connectionTimeout: 30000
+#spring:
+#  datasource:
+#    hikari:
+#      poolName: SpringBootJPAHikariCP
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+#      idleTimeout: 10000
+#      maxLifetime: 2000000
+#      connectionTimeout: 30000
 
 eureka:
   instance:
